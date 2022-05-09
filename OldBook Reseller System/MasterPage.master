@@ -1,0 +1,146 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<title>Book</title>
+
+<script type="text/javascript">
+    function DisableBack() {
+        window.history.forward();
+    }
+    DisableBack();
+
+    window.onload = DisableBack;
+
+    window.onpageshow = function (evt) {
+        if (evt.persisted) DisableBack();
+    }
+    window.onunload = function () { void (0); }
+
+    </script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/coin-slider.css" />
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/droid_sans_400-droid_sans_700.font.js"></script>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/coin-slider.min.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+<div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="searchform">
+       
+      </div>
+      <div class="logo">
+        <h1><a href="#">Online Old Book System</a></h1>
+      </div>
+      <div class="clr"></div>
+      <div class="menu_nav">
+        <ul>
+          <li class="active"><a href="#"><span>Home Page</span></a></li>
+          
+          
+          
+        </ul>
+      </div>
+      <div class="clr"></div>
+      
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_resize">
+        <div class="mainbar">
+            <div class="article">
+          
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+            </asp:ContentPlaceHolder>
+         
+        </div>
+       
+      </div>
+      <div class="sidebar">
+        <div class="gadget">
+          <h2 class="star"><span>Profile</span></h2>
+          <div class="clr"></div>
+          <ul class="sb_menu">
+           
+              <li>
+                  <asp:Image ID="Image2" runat="server" Height="127px" 
+                      ImageUrl="~/web_img/admin.jpg" Width="150px" />
+              </li>
+              <li>
+                  <asp:Label ID="lbluser" runat="server" Font-Bold="True" Font-Size="Medium" 
+                      ForeColor="Yellow"></asp:Label>
+                  <br />
+              </li>
+           
+          </ul>
+        </div>
+        <div class="gadget">
+            <ul class="ex_menu">
+                <li>
+                    <asp:Menu ID="Menu1" runat="server" Width="200px">
+                        <StaticMenuItemStyle BackColor="#FFCC00" BorderColor="#FF6600" 
+                            BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="Small" 
+                            ForeColor="#550000" HorizontalPadding="20px" ItemSpacing="3px" 
+                            VerticalPadding="3px" />
+                        <StaticHoverStyle BackColor="Yellow" />
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/Home.aspx" Text="Home" Value="Home"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/EditProfile.aspx" Text="Edit Profile" 
+                                Value="Edit Profile"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/MyDocuments.aspx" Text="My Books" 
+                                Value="My Documents"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/UploadDocuments.aspx" Text="Upload Books" 
+                                Value="Upload Documents"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/SearchDocuments.aspx" Text="Search Books" 
+                                Value="Search Documents"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/ChangePwd.aspx" Text="Change pwd" 
+                                Value="Change pwd"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Logout.aspx" Text="Logout" Value="Logout">
+                            </asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                        SelectCommand="SELECT [PhotoFile], [Name] FROM [UserMaster] WHERE ([UserID] = @UserID)">
+                        <SelectParameters>
+                            <asp:SessionParameter Name="UserID" SessionField="userid" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+              </li>
+             
+           
+          </ul>
+        </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="fbg">
+    <div class="fbg_resize">
+      <div class="col c1">
+        <h2>All rig<span>hts reserved</h2>
+        
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer_resize">
+     </div>
+    </div>
+  </div>
+</div>
+
+    </form>
+
+
+</html>
